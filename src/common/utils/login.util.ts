@@ -3,6 +3,7 @@ import { createHash } from "crypto";
 
 @Injectable()
 export class LoginUtil{
+
     constructor(){}
  
     encryptPassword(password:string):string{
@@ -15,5 +16,4 @@ export class LoginUtil{
         }
         return false;
     }
-
 }

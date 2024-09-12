@@ -15,4 +15,3 @@ const encrypt = (text: string) => {
 };
 
 const encryptedData = encrypt('12345678');
-console.log(encryptedData); 

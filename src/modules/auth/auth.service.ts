@@ -15,8 +15,8 @@ export class AuthService {
 
     async signIn(email:string,pass:string):Promise<any>{
         
-        let enPassword = this.loginUtil.encryptPassword(pass);
-
+        // let enPassword = this.loginUtil.encryptPassword(pass);
+            let enPassword = '123456';
         console.log("auth service validateUser enter",email,enPassword);
         const user = await this.usersService.findOne(email,pass);
         console.log("auth service validateUser leave",user);
@@ -29,13 +29,5 @@ export class AuthService {
             throw new UnauthorizedException();
         }
     }
-
-    //jwt
-    // async login(user:any){
-    //     const payload = {account:user.username,userId:user.id};
-    //     return {
-    //         access_token:this.jwtService.sign(payload)
-    //     }
-    // }
 
 }

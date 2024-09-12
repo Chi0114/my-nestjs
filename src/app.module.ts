@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './modules/users/users.module';
 import { CustomConfigModule } from './modules/custom-config/custom-config.module';
 import { CustomConfigService } from './modules/custom-config/custom-config.service';
+import { AuthModule } from './modules/auth/auth.module';
 
 
 
@@ -29,7 +30,7 @@ import { CustomConfigService } from './modules/custom-config/custom-config.servi
         synchronize: true,
       }),
     }),
-    UsersModule],
+    UsersModule,AuthModule],
   
   controllers: [AppController],
   providers: [AppService],
