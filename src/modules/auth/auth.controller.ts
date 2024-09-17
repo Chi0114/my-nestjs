@@ -22,9 +22,6 @@ export class AuthController {
     @Post('login')
     signIn(@Body() signInDto: LoginDto) {
         this.logger.log('login()', signInDto);
-        this.logger.debug('login()');
-        this.logger.verbose('login()');
-        this.logger.warn('login()');
         try {
             throw new Error()
           } catch (e) {
@@ -36,7 +33,7 @@ export class AuthController {
     @UseGuards(AuthGuard)
     @Get('profile')
     getProfile(@Request() req) {
-        this.logger.debug('profile()');
+        this.logger.warn('profile()');
         return req.user;
     }
 }
