@@ -32,7 +32,7 @@ export class CustomConfigService {
   }
 
   getDatabasePassword(): string {
-    console.log("secretKey===============>>>>:" + this.secretKey);
+    // console.log("secretKey===============>>>>:" + this.secretKey);
     return this.decrypt({
       iv: process.env.DATABASE_PASSWORD_IV,
       content: process.env.DATABASE_PASSWORD_CONTENT,

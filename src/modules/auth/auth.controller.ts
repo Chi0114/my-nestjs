@@ -5,30 +5,38 @@ import { Body,
     HttpStatus,
     Post,
     Request,
-    UseGuards,
-    Logger} from '@nestjs/common';
+    UseGuards, Logger} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { LoginDto } from './dto/login.dto';
 
 @Controller('auth')
 export class AuthController {
-    private readonly logger = new Logger(AuthController.name);
-
-    constructor(private authService: AuthService) {}
+    constructor(
+        private readonly authService: AuthService,
+        private readonly logger: Logger,
+       
+    ) {}
 
     @HttpCode(HttpStatus.OK)
     @Post('login')
     signIn(@Body() signInDto: LoginDto) {
-        //任务2
-        this.logger.debug('signIn', signInDto);
+        //TODO 参数校验失败
+        this.logger.log('signIn', signInDto);
+        this.logger.debug('Calling login()', AuthController.name);
+        this.logger.verbose('Calling login()', AuthController.name);
+        this.logger.warn('Calling login()', AuthController.name);
+        try {
+            throw new Error()
+          } catch (e) {
+            this.logger.error('Calling getHello()', e.stack, AuthController.name);
+          }
         return this.authService.signIn(signInDto.email, signInDto.password);
     }
 
     @UseGuards(AuthGuard)
     @Get('profile')
     getProfile(@Request() req) {
-        //任务3 去数据库查询个人详细信息？
         return req.user;
     }
 }
