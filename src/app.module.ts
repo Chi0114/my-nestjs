@@ -1,4 +1,6 @@
-import { Module } from '@nestjs/common';
+import {
+  Module,Logger, 
+  Global} from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
@@ -10,6 +12,8 @@ import { AuthModule } from './modules/auth/auth.module';
 
 
 
+
+@Global()
 @Module({
   imports: [
     CustomConfigModule,
@@ -33,6 +37,9 @@ import { AuthModule } from './modules/auth/auth.module';
     UsersModule,AuthModule],
   
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, Logger,
+  ],
+  exports: [Logger]
 })
 export class AppModule {}
+

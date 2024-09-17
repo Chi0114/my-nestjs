@@ -21,15 +21,14 @@ export class AuthController {
     @HttpCode(HttpStatus.OK)
     @Post('login')
     signIn(@Body() signInDto: LoginDto) {
-        //TODO 参数校验失败
-        this.logger.log('signIn', signInDto);
-        this.logger.debug('Calling login()', AuthController.name);
-        this.logger.verbose('Calling login()', AuthController.name);
-        this.logger.warn('Calling login()', AuthController.name);
+        this.logger.log('login()', signInDto);
+        this.logger.debug('login()');
+        this.logger.verbose('login()');
+        this.logger.warn('login()');
         try {
             throw new Error()
           } catch (e) {
-            this.logger.error('Calling getHello()', e.stack, AuthController.name);
+            this.logger.error('login()', e.stack);
           }
         return this.authService.signIn(signInDto.email, signInDto.password);
     }
@@ -37,6 +36,7 @@ export class AuthController {
     @UseGuards(AuthGuard)
     @Get('profile')
     getProfile(@Request() req) {
+        this.logger.debug('profile()');
         return req.user;
     }
 }
